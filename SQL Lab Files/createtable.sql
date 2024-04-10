@@ -7,5 +7,5 @@ CREATE TABLE earthquakes (
   magSource char,
   locationSource char,
   location char,
-  place char,
+  place char
 );
