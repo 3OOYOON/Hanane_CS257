@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS earthquakes;
 CREATE TABLE earthquakes (
   time text,
-  mag double,
+  mag decimal,
   magType text,
   place text,
   locationSource text,
