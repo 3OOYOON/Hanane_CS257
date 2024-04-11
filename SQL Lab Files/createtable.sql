@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS earthquakes;
 CREATE TABLE earthquakes (
-  time char,
+  time varchar(max),
   mag float,
   magType char,
   place char,
