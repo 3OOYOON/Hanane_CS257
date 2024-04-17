@@ -11,5 +11,5 @@ DROP TABLE IF EXISTS USA State Population;
 CREATE TABLE USA State Population (
   Code text,
   State text,
-  Population int,
+  Population int
 );
