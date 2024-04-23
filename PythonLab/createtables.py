@@ -25,7 +25,8 @@ def test_query_one():
                 Population int
             );"""
 
-    cur.execute( sql )
+    cur.execute( sql1 )
+    cur.execute( sql2 )
     row = cur.fetchone()
 
     conn.commit()
