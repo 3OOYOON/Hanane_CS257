@@ -32,3 +32,6 @@ def test_query_one():
     conn.commit()
     
     return row
+
+
+test_query_one() 
