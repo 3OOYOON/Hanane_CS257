@@ -15,8 +15,8 @@ def test_query_one():
 
     cur = conn.cursor()
 
-    sql1 = """DROP TABLE IF EXISTS USA City State Population;
-            CREATE TABLE USA Cities And State Population (
+    sql1 = """DROP TABLE IF EXISTS USA_City_State_Population;
+            CREATE TABLE USA City_State_Population (
                 City text,
                 State text,
                 Population int,
@@ -24,8 +24,8 @@ def test_query_one():
                 Longitude decimal
             );"""
 
-    sql2 = """DROP TABLE IF EXISTS USA State Population;
-            CREATE TABLE USA State Population (
+    sql2 = """DROP TABLE IF EXISTS USA_State_Population;
+            CREATE TABLE USA_State_Population (
                 Code text,
                 State text,
                 Population int
