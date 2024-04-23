@@ -16,7 +16,7 @@ def test_query_one():
     cur = conn.cursor()
 
     sql1 = """DROP TABLE IF EXISTS USA_City_State_Population;
-            CREATE TABLE USA City_State_Population (
+            CREATE TABLE USA_City_State_Population (
                 City text,
                 State text,
                 Population int,
