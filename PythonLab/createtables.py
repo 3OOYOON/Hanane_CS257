@@ -1,4 +1,10 @@
+# We use the psycopg2 library to help us connec to the Postgres SQL database
+# This library is already installed on stearns.mathcs.carleton.edu
+import psycopg2
+
 def test_query_one():
+
+    # You will need to change the Password to use this code
     
     conn = psycopg2.connect(
         host="localhost",
@@ -17,7 +23,7 @@ def test_query_one():
                 Latitude decimal,
                 Longitude decimal
             );"""
-            
+
     sql2 = """DROP TABLE IF EXISTS USA State Population;
             CREATE TABLE USA State Population (
                 Code text,
@@ -25,13 +31,13 @@ def test_query_one():
                 Population int
             );"""
 
+    
     cur.execute( sql1 )
     cur.execute( sql2 )
     row = cur.fetchone()
 
     conn.commit()
-    
-    return row
 
+    return row
 
 test_query_one() 
