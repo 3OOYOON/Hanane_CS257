@@ -9,21 +9,21 @@ def test_query_one():
 
     cur = conn.cursor()
 
-    sql1 = "DROP TABLE IF EXISTS USA City State Population;
+    sql1 = """DROP TABLE IF EXISTS USA City State Population;
             CREATE TABLE USA Cities And State Population (
                 City text,
                 State text,
                 Population int,
                 Latitude decimal,
                 Longitude decimal
-            );"
+            );"""
             
-    sql2 = "DROP TABLE IF EXISTS USA State Population;
+    sql2 = """DROP TABLE IF EXISTS USA State Population;
             CREATE TABLE USA State Population (
                 Code text,
                 State text,
                 Population int
-            );"
+            );"""
 
     cur.execute( sql )
     row = cur.fetchone()
