@@ -34,7 +34,6 @@ def test_query_one():
     
     cur.execute( sql1 )
     cur.execute( sql2 )
-    row = cur.fetchone()
 
     conn.commit()
 
