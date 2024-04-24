@@ -16,7 +16,7 @@ def my_display(word1, word2):
 def my_color(word1):
     return '<h1 style="color:rgb(11, 11, 97)">' + word1 + '</h1>'
 
-@pp.route('/add/num1/num2')
+@app.route('/add/num1/num2')
 def my_display(num1, num2):
     num1 = input('Whats your first number? (please input 0-9)')
     num2 = input('Whats your second number? (please input 0-9)')
