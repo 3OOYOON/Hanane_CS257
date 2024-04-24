@@ -1,86 +1,50 @@
 import psycopg2
 
-#Often we want to put a Python variable into an SQL query
-def test_query_variable():
-    
-    # You will need to change the Port and the Password to use this code
-
+def query_db():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
         database="akeelh",
         user="akeelh",
         password="spring482farm")
-
     cur = conn.cursor()
 
+    # Check if Northfield is present
+    cur.execute("SELECT city, latitude, longitude FROM cities WHERE city = 'Northfield';")
+    result = cur.fetchone()
+    if result:
+        print(f"Northfield is at latitude {result[1]} and longitude {result[2]}.")
+    else:
+        print("Northfield is not present in the database.")
 
-    # Here the %s signals that we will replace this with a variable later
-    sql = "select * from usa_city_state_population where city = 'Northfield';"
+    # City with the largest population
+    cur.execute("SELECT city FROM cities ORDER BY population DESC LIMIT 1;")
+    print("City with the largest population:", cur.fetchone()[0])
 
-    
-    cur.execute( sql )
+    # City in Minnesota with the smallest population
+    cur.execute("SELECT city FROM cities WHERE state = 'Minnesota' ORDER BY population ASC LIMIT 1;")
+    print("Minnesota city with the smallest population:", cur.fetchone()[0])
 
-    print ("is northfield present in this table?")
-    if cur.execute( sql ) = none:
-        print ("none")
-    return
+    # Extremes in geographical location
+    cur.execute("SELECT city FROM cities ORDER BY latitude DESC LIMIT 1;")
+    print("Northmost city:", cur.fetchone()[0])
+    cur.execute("SELECT city FROM cities ORDER BY latitude LIMIT 1;")
+    print("Southmost city:", cur.fetchone()[0])
+    cur.execute("SELECT city FROM cities ORDER BY longitude DESC LIMIT 1;")
+    print("Eastmost city:", cur.fetchone()[0])
+    cur.execute("SELECT city FROM cities ORDER BY longitude LIMIT 1;")
+    print("Westmost city:", cur.fetchone()[0])
 
-    
-    
-    sql1= "select city from usa_city_state_population order by population limit 1;"
-    
-    print ("city with largest population")
-    cur.execute( sql1 )
+    # Total population by state input
+    state_name = input("Enter a state (abbreviation or full name): ")
+    if len(state_name) == 2:
+        cur.execute("SELECT SUM(population) FROM cities WHERE state IN (SELECT name FROM states WHERE abbreviation = %s);", (state_name,))
+    else:
+        cur.execute("SELECT SUM(population) FROM cities WHERE state = %s;", (state_name,))
+    total_pop = cur.fetchone()[0]
+    print(f"Total population for {state_name}: {total_pop}")
 
-    
-    sql2 = "select * from usa_city_state_population where state = 'Minnesota' order by state desc limit 1;"
-    
-    print ("Minnesota city with smallest population")
-    cur.execute( sql2 )
-    
-    # for north most city
-    sql3 = "select city from usa_city_state_population order by latitude limit 1;"
-    
-    # for south most city 
-    sql4 = "select city from usa_city_state_population order by latitude desc limit 1;"
+    cur.close()
+    conn.close()
 
-    # for east most city
-    sql5 = "select city from usa_city_state_population order by longitude limit 1;"
-
-    # for west most city
-    sql6 = "select city from usa_city_state_population order by longitude desc limit 1;"
-
-    print ("northmost city")
-    cur.execute( sql3 )
-
-    print ("southmost city")
-    cur.execute( sql4 )
-
-    print ("eastmost city")
-    cur.execute( sql5 )
-
-    print ("westmost city")
-    cur.execute( sql6 )
-    
-
-    state_name = input("input a state, for example either MN or Minnesota")
-
-    if len(state_name) <=1 :
-        print (improper state name)
-    else if len(state_name) = 2:
-        sql7 = "select * from usa_city_state_population where code = state_name"
-
-    # IMPORTANT: We need a list of values for the second input to execute
-    #   ... Even if we are only inserting my variable, it must be in a list
-    # For example,  [state_abb1]
-    
-    row_list = cur.fetchall()
-
-    for row in row_list:
-        print(row)
-
-    return None
-
-print( test_query_one() )
-
+query_db()
