@@ -56,4 +56,5 @@ def query_db():
     cur.close()
     conn.close()
 
-    query_db()
+
+query_db()
