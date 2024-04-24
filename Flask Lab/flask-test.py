@@ -16,6 +16,18 @@ def my_display(word1, word2):
 def my_color(word1):
     return '<h1 style="color:rgb(11, 11, 97)">' + word1 + '</h1>'
 
+@pp.route('/add/num1/num2')
+def my_display(num1, num2)
+    num1 = input('Whats your first number? (please input 0-9)')
+    num2 = input('Whats your second number? (please input 0-9)')
+    float(num1)
+    float(num2)
+
+    if num1 and num2 float:
+        return '<h1 style="color:rgb(11, 11, 97)">' + (num1 + num2) + '</h1>'
+    else:
+        return '<h1 style="color:rgb(11, 11, 97)">' + "at least one of your inputs is not a number" + '</h1>'
+
 if __name__ == '__main__':
     my_port = 5209
     app.run(host='0.0.0.0', port = my_port)
