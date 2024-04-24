@@ -18,6 +18,8 @@ def my_color(word1):
 
 @app.route('/add/<num1>/<num2>')
 def my_display2(num1, num2):
+    int num1
+    int num2
 
     if num1 and num2 == int:
         return '<h1 style="color:rgb(11, 11, 97)">' + (num1 + num2) + '</h1>'
