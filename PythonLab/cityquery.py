@@ -47,7 +47,7 @@ def query_db():
     # Total population by state input
     state_name = input("Enter a state (abbreviation or full name): ")
     if len(state_name) == 2:
-        cur.execute("select sum(population) from usa_city_state_population where state in (select name from state where code = %s);", (state_name,))
+        cur.execute("select sum(population) from usa_city_state_population where state in (select name from usa_state_population where code = %s);", (state_name,))
     else:
         cur.execute("select sum(population) from usa_state_population where state = %s;", (state_name,))
     total_pop = cur.fetchone()[0]
