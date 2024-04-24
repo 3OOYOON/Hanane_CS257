@@ -26,7 +26,7 @@ def my_display2(num1, num2):
     if num1 and num2 == float:
     return '<h1 style="color:rgb(11, 11, 97)">' + (num1 + num2) + '</h1>'
     else:
-        return '<h1 style="color:rgb(11, 11, 97)">' + "at least one of your inputs is not a number" + '</h1>'
+    return '<h1 style="color:rgb(11, 11, 97)">' + "at least one of your inputs is not a number" + '</h1>'
 
 if __name__ == '__main__':
     my_port = 5209
