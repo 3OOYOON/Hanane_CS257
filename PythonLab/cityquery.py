@@ -47,13 +47,13 @@ def query_db():
     # Total population by state input
     state_name = input("Enter a state (abbreviation or full name): ")
     if len(state_name) == 2:
-        cur.execute("SELECT SUM(population) FROM cities WHERE state IN (SELECT name FROM states WHERE abbreviation = %s);", (state_name,))
+        cur.execute("select sum(population) from usa_city_state_population where state in (select name from states WHERE code = %s);", (state_name,))
     else:
-        cur.execute("SELECT SUM(population) FROM cities WHERE state = %s;", (state_name,))
+        cur.execute("select sum(population) from us_state_pop where state = %s;", (state_name,))
     total_pop = cur.fetchone()[0]
     print(f"Total population for {state_name}: {total_pop}")
 
     cur.close()
     conn.close()
 
-query_db()
+
