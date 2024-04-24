@@ -1,5 +1,6 @@
 import psycopg2
 
+
 def query_db():
     conn = psycopg2.connect(
         host="localhost",
@@ -9,31 +10,39 @@ def query_db():
         password="spring482farm")
     cur = conn.cursor()
 
+
     # Check if Northfield is present
-    cur.execute("SELECT city, latitude, longitude FROM cities WHERE city = 'Northfield';")
+    cur.execute("select city from usa_city_state_population where city = 'Northfield';")
     result = cur.fetchone()
     if result:
-        print(f"Northfield is at latitude {result[1]} and longitude {result[2]}.")
+        print(f"Northfield is present in the data")
     else:
         print("Northfield is not present in the database.")
 
+
     # City with the largest population
-    cur.execute("SELECT city FROM cities ORDER BY population DESC LIMIT 1;")
+    cur.execute("select city from usa_city_state_population order by population limit 1")
     print("City with the largest population:", cur.fetchone()[0])
 
+
     # City in Minnesota with the smallest population
-    cur.execute("SELECT city FROM cities WHERE state = 'Minnesota' ORDER BY population ASC LIMIT 1;")
+    cur.execute("select city from usa_city_state_population where state = 'Minnesota' order by state desc limit 1;")
     print("Minnesota city with the smallest population:", cur.fetchone()[0])
 
+
     # Extremes in geographical location
-    cur.execute("SELECT city FROM cities ORDER BY latitude DESC LIMIT 1;")
+    cur.execute("select city from usa_city_state_population order by latitude limit 1;")
     print("Northmost city:", cur.fetchone()[0])
-    cur.execute("SELECT city FROM cities ORDER BY latitude LIMIT 1;")
+
+    cur.execute("select city from usa_city_state_population order by latitude desc limit 1;")
     print("Southmost city:", cur.fetchone()[0])
-    cur.execute("SELECT city FROM cities ORDER BY longitude DESC LIMIT 1;")
+
+    cur.execute("select city from usa_city_state_population order by longitude limit 1;")
     print("Eastmost city:", cur.fetchone()[0])
-    cur.execute("SELECT city FROM cities ORDER BY longitude LIMIT 1;")
+
+    cur.execute("select city from usa_city_state_population order by longitude desc limit 1;")
     print("Westmost city:", cur.fetchone()[0])
+
 
     # Total population by state input
     state_name = input("Enter a state (abbreviation or full name): ")
