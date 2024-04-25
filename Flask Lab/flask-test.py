@@ -46,9 +46,13 @@ def my_display3 (abbrev):
     abbrev = str(abbrev)
 
     if len(abbrev) == 2:
-        return '<h1 style="color:rgb(11, 11, 97)">' + cur.execute("select sum(population) from usa_city_state_population where state in (select state from usa_state_population where code = %s);", (state_name,)) + '</h1>'
+        cur.execute("select sum(population) from usa_city_state_population where state in (select state from usa_state_population where code = %s);", (state_name,))
     else:
-        return '<h1 style="color:rgb(11, 11, 97)">' + "That was not a state abbreviation, state abriviations consist of two letters, EX: MN" + '</h1>'
+        cur.execute("select sum(population) from usa_state_population where state = %s;", (state_name,))
+    total_pop = cur.fetchone()[0]
+
+    if isinstance(abbrev, str) and len(abbrev) = 2:
+        return '<h1 style="color:rgb(11, 11, 97)">' + "The total population of " + str(abbrev) + "is "+ total_pop +'</h1>'
 
 
 if __name__ == '__main__':
