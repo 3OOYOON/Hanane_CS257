@@ -25,8 +25,12 @@ def my_display2(num1, num2):
     if isinstance(num1, int) and isinstance(num2, int):
         return '<h1 style="color:rgb(11, 11, 97)">' + sum + '</h1>'
     else:
-        return '<h1 style="color:rgb(11, 11, 97)">' + "at least one of your inputs is not a number " +num1 + "- - " + num2 + '</h1>'
+        return '<h1 style="color:rgb(11, 11, 97)">' + "at least one of your inputs is not a number " +num1 + "- - " + num2 + type(num1) + type(num2)'</h1>'
+
+    
+
 
 if __name__ == '__main__':
+
     my_port = 5209
     app.run(host='0.0.0.0', port = my_port)
