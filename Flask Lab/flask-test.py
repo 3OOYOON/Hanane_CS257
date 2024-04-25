@@ -3,25 +3,37 @@ import psycopg2
 
 app = flask.Flask(__name__)
 
-#
+def query_db():
+    conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="akeelh",
+        user="akeelh",
+        password="spring482farm")
+    cur = conn.cursor()
+
+
 @app.route('/hello')
 def my_function():
     return "Hello World!"
+
 
 @app.route('/display/<word1>/<word2>')
 def my_display(word1, word2):
     the_string = "The words are: " + word1 + " and " + word2;
     return the_string
 
+
 @app.route('/color/<word1>')
 def my_color(word1):
     return '<h1 style="color:rgb(11, 11, 97)">' + word1 + '</h1>'
+
 
 @app.route('/add/<num1>/<num2>')
 def my_display2(num1, num2):
     num1 = int(num1)
     num2 = int(num2)
-    sum = num1 + num2;
+    sum = num1 + num2
 
     if isinstance(num1, int) and isinstance(num2, int):
         return '<h1 style="color:rgb(11, 11, 97)">' + str(sum) + '</h1>'
@@ -43,3 +55,5 @@ if __name__ == '__main__':
 
     my_port = 5209
     app.run(host='0.0.0.0', port = my_port)
+
+
