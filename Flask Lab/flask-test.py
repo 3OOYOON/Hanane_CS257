@@ -22,7 +22,7 @@ def my_display2(num1, num2):
     int(num2)
     sum = num1 + num2;
 
-    if isinstance(num1, int) and isinstance(num2, int):
+    if Number.isInteger(num1) and Number.isInteger(num2):
         return '<h1 style="color:rgb(11, 11, 97)">' + sum + '</h1>'
     else:
         return '<h1 style="color:rgb(11, 11, 97)">' + "at least one of your inputs is not a number" + '</h1>'
