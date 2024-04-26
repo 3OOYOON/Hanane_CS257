@@ -46,15 +46,16 @@ def query_db():
         abbrev = str(abbrev)
 
         if len(abbrev) == 2:
-            cur.execute("select sum(population) from usa_city_state_population where state in (select state from usa_state_population where code = %s);", (state_name,))
+            cur.execute("select sum(population) from usa_city_state_population where state in (select state from usa_state_population where code = %s);", (abbrev))
         else:
-            cur.execute("select sum(population) from usa_state_population where state = %s;", (state_name,))
+            cur.execute("select sum(population) from usa_state_population where state = %s;", (abbrev))
         total_pop = cur.fetchone()[0]
 
         if isinstance(abbrev, str) and len(abbrev) == 2:
             return '<h1 style="color:rgb(11, 11, 97)">' + "The total population of " + str(abbrev) + "is "+ total_pop +'</h1>'
 
 query_db()
+
 
 if __name__ == '__main__':
 
