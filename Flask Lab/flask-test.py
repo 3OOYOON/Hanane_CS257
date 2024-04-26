@@ -52,7 +52,7 @@ def query_db():
         total_pop = cur.fetchone()[0]
 
         if isinstance(abbrev, str) and len(abbrev) == 2:
-            return '<h1 style="color:rgb(11, 11, 97)">' + "The total population of " + str(abbrev,) + "is "+ str(total_pop) +'</h1>'
+            return '<h1 style="color:rgb(11, 11, 97)">' + "The total population of " + str(abbrev,) + " is "+ str(total_pop) +'</h1>'
 
 query_db()
 
