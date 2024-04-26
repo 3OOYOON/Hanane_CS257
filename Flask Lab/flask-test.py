@@ -46,9 +46,9 @@ def query_db():
         abbrev = str(abbrev)
 
         if len(abbrev) == 2:
-            cur.execute("select sum(population) from usa_city_state_population where state in (select state from usa_state_population where code = %s);", (abbrev))
+            cur.execute("select sum(population) from usa_city_state_population where state in (select state from usa_state_population where code = %s);", str(abbrev))
         else:
-            cur.execute("select sum(population) from usa_state_population where state = %s;", (abbrev))
+            cur.execute("select sum(population) from usa_state_population where state = %s;", str(abbrev))
         total_pop = cur.fetchone()[0]
 
         if isinstance(abbrev, str) and len(abbrev) == 2:
