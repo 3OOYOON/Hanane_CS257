@@ -54,6 +54,7 @@ def my_display3 (abbrev):
     if isinstance(abbrev, str) and len(abbrev) == 2:
         return '<h1 style="color:rgb(11, 11, 97)">' + "The total population of " + str(abbrev) + "is "+ total_pop +'</h1>'
 
+query_db()
 
 if __name__ == '__main__':
 
