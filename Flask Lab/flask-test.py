@@ -51,7 +51,7 @@ def my_display3 (abbrev):
         cur.execute("select sum(population) from usa_state_population where state = %s;", (state_name,))
     total_pop = cur.fetchone()[0]
 
-    if isinstance(abbrev, str) and len(abbrev) = 2:
+    if isinstance(abbrev, str) and len(abbrev) == 2:
         return '<h1 style="color:rgb(11, 11, 97)">' + "The total population of " + str(abbrev) + "is "+ total_pop +'</h1>'
 
 
