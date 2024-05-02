@@ -30,6 +30,7 @@ verbs = ['sings', 'runs', 'jumps', 'reads']
 def get_random_city():
     cur.execute('select city from usa_city_state_population order by random() limit 1')
     city = cur.fetchone()[0]
+    cur.close()
     conn.close()
     return city
 
@@ -55,4 +56,4 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port = my_port)  
 
 
-
+query_db()
