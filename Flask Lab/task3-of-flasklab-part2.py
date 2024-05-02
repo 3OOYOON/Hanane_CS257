@@ -29,7 +29,7 @@ verbs = ['sings', 'runs', 'jumps', 'reads']
 
 def get_random_city():
     cur.execute('select city from usa_city_state_population order by random() limit 1')
-    city = c.fetchone()[0]
+    city = cur.fetchone()[0]
     conn.close()
     return city
 
