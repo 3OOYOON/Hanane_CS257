@@ -28,7 +28,15 @@ verbs = ['sings', 'runs', 'jumps', 'reads']
 
 
 def get_random_city():
+
+    conn = psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="akeelh",
+        user="akeelh",
+        password="spring482farm")
     cur = conn.cursor()
+
     cur.execute('select city from usa_city_state_population order by random() limit 1')
     city = cur.fetchone()[0]
     cur.close()
