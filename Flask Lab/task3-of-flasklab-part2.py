@@ -22,7 +22,8 @@ def generate_sentence():
     verb = random.choice(verbs)
     place = random.choice(places)
     year = random.randint(1990, 2022)
-    return sentance "{subject} the {adjective} {verb} {place} in {year}."
+    #for some reason python3 doesnt like when i give a function a name and wants only f
+    return f "{subject} the {adjective} {verb} {place} in {year}."
 
 
 @app.route('/rand/sentence/gen')
