@@ -8,15 +8,27 @@ app = Flask(__name__)
 def welcome():
     return render_template("index2.html")
 
-@app.route('/rand/image/gen')
-def rand(low, high):
-    #Input values that come from a URL (i.e., @app.route)
-    #   are always strings so I need to convert the type to int
-    low_int = int(low)
-    high_int = int(high)
-    
-    num = random.randint(low_int, high_int)
-    return render_template("random.html", randNum = num)
+
+# Lists of parts of speech
+subjects = ['Alice', 'Alberto', 'Bob', 'Sara']
+adjectives = ['wise', 'brave', 'curious', 'joyful']
+verbs = ['sings', 'runs', 'jumps', 'reads']
+places = ['in the park', 'at the library', 'on the mountain', 'near the lake']
+
+
+def generate_sentence():
+    subject = random.choice(subjects)
+    adjective = random.choice(adjectives)
+    verb = random.choice(verbs)
+    place = random.choice(places)
+    year = random.randint(1990, 2022)
+    return sentance "{subject} the {adjective} {verb} {place} in {year}."
+
+
+@app.route('/rand/sentence/gen')
+def index():
+    sentence = generate_sentence()
+    return render_template('index2.html', sentence=sentence)
 
 if __name__ == '__main__':
     my_port = 5209
