@@ -6,16 +6,6 @@ import psycopg2
 
 app = Flask(__name__)
 
-def query_db():
-    conn = psycopg2.connect(
-        host="localhost",
-        port=5432,
-        database="akeelh",
-        user="akeelh",
-        password="spring482farm")
-    cur = conn.cursor()
-
-
 @app.route('/')
 def welcome():
     return render_template("index2.html")
@@ -28,7 +18,7 @@ verbs = ['sings', 'runs', 'jumps', 'reads']
 
 
 def get_random_city():
-
+# it only worked when i defined query in here
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
@@ -51,7 +41,7 @@ def generate_sentence():
     place = get_random_city()
     year = random.randint(1990, 2022)
     #for some reason python3 doesnt like when i give a function a name and wants only f
-    return f"{subject} the {adjective} {verb} {place} in {year}."
+    return f"{subject} the {adjective} {verb} in {place} in {year}."
 
 
 @app.route('/rand/sentence/gen')
