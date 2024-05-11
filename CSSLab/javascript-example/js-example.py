@@ -18,15 +18,15 @@ def fight(user_choice):
     computer_choice = random.choice(potential_position)
 
     if (computer_choice == 'Rock' and (user_choice == 'p' or user_choice == 'P')):
-        display("Rock loses to Paper, you win!!!")
+        return("Rock loses to Paper, you win!!!")
     elif (computer_choice == 'Paper' and (user_choice == 's' or user_choice == 'S')):
-        display("Paper loses to Scissors, you win!!!")
+        return("Paper loses to Scissors, you win!!!")
     elif (computer_choice == 'Scissors' and (user_choice == 'r' or user_choice == 'R')):
-        display("Scissors loses to Rock, you win!!!")
+        return("Scissors loses to Rock, you win!!!")
     elif computer_choice == user_choice.lower():
-        display("It's a tie!")
+        return("It's a tie!")
     else:
-        display("You lose")
+        return("You lose")
 
 
 def play_game():
@@ -35,10 +35,13 @@ def play_game():
         fight(user)
         play_again = input("Do you want to play again? (y/n): ")
         if play_again.lower() != 'y':
-            display("Thanks for playing!")
+            return("Thanks for playing!")
             break
 
 
 if __name__ == '__main__':
     my_port = 5209
     app.run(host='0.0.0.0', port = my_port) 
+
+
+play_game()
