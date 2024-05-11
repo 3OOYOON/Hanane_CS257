@@ -6,15 +6,6 @@ import psycopg2
 app = Flask(__name__)
 
 
-conn = psycopg2.connect(
-    host="localhost",
-    port=5432,
-    database="akeelh",
-    user="akeelh",
-    password="spring482farm")
-cur = conn.cursor()
-
-
 @app.route('/rps')
 def welcome():
     message = "Welcome to My Example Webpage."
@@ -47,9 +38,6 @@ def play_game():
             print("Thanks for playing!")
             break
 
-
-cur.close()
-conn.close()
 
 if __name__ == '__main__':
     my_port = 5209
