@@ -7,9 +7,11 @@
 
 <p class="center-para">{{ someText }}</p>
 
-<form id="gameForm">
-  <button class="big-button" type="button" onclick="play_game()">Play</button>
-</form>
+<div class="center-para">
+  <button class="big-button" value="r" onclick="play_game(this.value)">Rock</button>
+  <button class="big-button" value="p" onclick="play_game(this.value)">Paper</button>
+  <button class="big-button" value="s" onclick="play_game(this.value)">Scissors</button>
+</div>
 
 <p id="result" class="center-para"></p>
 
