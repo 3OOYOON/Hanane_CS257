@@ -9,9 +9,9 @@ app = Flask(__name__)
 @app.route('/rps')
 def welcome():
     message = """ Welcome to my Rock Paper Scissors Webpage.
-    As you can guess you can play rock paper scissors on this site
-    Either press rock, paper, or scissors and see if you can beat the computer
-    You may either win, lose, or get in a tie"""
+    As you can guess you can play rock paper scissors on this site.
+    Either press rock, paper, or scissors and see if you can beat the computer.
+    You may either win, lose, or get in a tie."""
     return render_template("homepage.html", someText = message)
 
 
