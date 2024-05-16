@@ -8,8 +8,10 @@ app = Flask(__name__)
 
 @app.route('/rps')
 def welcome():
-    message = "Welcome to My Example Webpage."
-    message = message + " This text was produced by concatenating strings in Python!"
+    message = "Welcome to my Rock Paper Scissors Webpage."
+    message = message + " As you can guess you can play rock paper scissors on this site"
+    message = "Either press rock, paper, or scissors and see if you can beat the computer"
+    message = "You may either win, lose, or get in a tie"
     return render_template("homepage.html", someText = message)
 
 
