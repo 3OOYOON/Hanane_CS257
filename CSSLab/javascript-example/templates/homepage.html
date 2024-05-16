@@ -1,22 +1,15 @@
 <head>
   <link rel="stylesheet" href="/static/example.css">
-
   <script src="/static/example.js"></script>
 </head>
 
-<h1 class="my-class" id="hello">
-  Hello World!
-</h1>
+<h1 class="my-class" id="hello">Rock, Paper, Scissors</h1>
 
-<p class="center-para">
-  {{someText}}
-</p>
+<p class="center-para">{{ someText }}</p>
 
-<p class="center-para">
-<button class="big-button" onclick="play_game()">
-   Rock, Paper, Scissors
-</button>
+<form id="gameForm">
+  <button class="big-button" type="button" onclick="play_game()">Play</button>
+</form>
 
+<p id="result" class="center-para"></p>
 
-
-</p>
